@@ -20,10 +20,11 @@ services:
           property: url
 
   # React static site frontend
-  - type: static
+  - type: web
     name: taskflow-frontend
+    env: static
     buildCommand: npm install && npm run build
-    publishDir: dist
+    staticPublishPath: dist
     rootDir: frontend
     envVars:
       - key: VITE_API_URL
