@@ -1,0 +1,20 @@
+# Backend environment variables and credentials
+backend/.env
+
+# Python compilation and caches
+__pycache__/
+*.pyc
+backend/__pycache__/
+backend/routes/__pycache__/
+
+# Node dependencies and build files
+node_modules/
+frontend/node_modules/
+frontend/dist/
+dist/
+
+# OS and Log files
+.DS_Store
+Thumbs.db
+*.log
+logs/
