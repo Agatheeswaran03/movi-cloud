@@ -15,7 +15,7 @@ services:
       - key: JWT_SECRET
         generateValue: true # Render will automatically generate a secure random secret key
       - key: FRONTEND_URL
-        value: https://taskflow-frontend.onrender.com
+        value: https://taskflow-frontend-qx2u.onrender.com
 
   # React static site frontend
   - type: web
@@ -26,4 +26,4 @@ services:
     rootDir: frontend
     envVars:
       - key: VITE_API_URL
-        value: https://taskflow-backend.onrender.com
+        value: https://taskflow-backend-za7q.onrender.com
