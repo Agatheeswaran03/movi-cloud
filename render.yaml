@@ -20,9 +20,8 @@ services:
           property: url
 
   # React static site frontend
-  - type: web
+  - type: static
     name: taskflow-frontend
-    env: static
     buildCommand: npm install && npm run build
     publishDir: dist
     rootDir: frontend
