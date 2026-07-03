@@ -1,0 +1,34 @@
+services:
+  # FastAPI Backend Web Service
+  - type: web
+    name: taskflow-backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    rootDir: backend
+    envVars:
+      - key: MONGODB_URL
+        sync: false # Set your MongoDB Atlas connection string in Render UI
+      - key: DATABASE_NAME
+        value: taskmanager
+      - key: JWT_SECRET
+        generateValue: true # Render will automatically generate a secure random secret key
+      - key: FRONTEND_URL
+        fromService:
+          name: taskflow-frontend
+          type: web
+          property: url
+
+  # React static site frontend
+  - type: web
+    name: taskflow-frontend
+    env: static
+    buildCommand: npm install && npm run build
+    publishDir: dist
+    rootDir: frontend
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          name: taskflow-backend
+          type: web
+          property: url
